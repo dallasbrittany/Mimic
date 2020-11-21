@@ -53,11 +53,12 @@ from mpl_toolkits.basemap import Basemap
 
 # Constants
 SERIAL_SPEED = 9600
+LOG_DIRECTORY = 'Logs'
 
 os.environ['KIVY_GL_BACKEND'] = 'gl' #need this to fix a kivy segfault that occurs with python3 for some reason
 
 # Create Program Logs
-mimiclog = open('/home/pi/Mimic/Pi/Logs/mimiclog.txt', 'w')
+mimiclog = open(os.path.join(os.path.dirname(__file__), "{}/mimiclog.txt".format(LOG_DIRECTORY)), 'w')
 
 def logWrite(*args):
     mimiclog.write(str(datetime.utcnow()))
